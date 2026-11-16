@@ -47,7 +47,7 @@
 ```text
 btc-trading-wiki/
 ├── AGENTS.md            ← 本規則，AI 修改專案前先讀
-├── README.md            ← 專案介紹、GitHub Pages 部署與交作業資訊
+├── README.md            ← 專案介紹、GitHub Pages 部署與維護說明
 ├── tests/
 │   └── validate-data.cjs ← 驗證資料欄位、關聯與重複 ID
 └── docs/                ← GitHub Pages 網站根目錄
