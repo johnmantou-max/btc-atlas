@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0c1019" />
+    <meta name="description" content="BTC Atlas 是一座免費、可擴充的繁體中文比特幣交易知識庫，從 K 線、市場結構、技術指標到風險管理，建立完整的學習路線。" />
+    <title>BTC Atlas — 比特幣交易知識庫</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./data/articles.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="知識庫側邊導覽">
+        <a class="brand" href="#library" aria-label="BTC Atlas 首頁">
+          <span class="brand-mark">₿</span>
+          <span class="brand-copy"><strong>BTC<span>ATLAS</span></strong><small>TRADING KNOWLEDGE BASE</small></span>
+        </a>
+        <div class="sidebar-rule"></div>
+        <p class="sidebar-label">WORKSPACE</p>
+        <nav class="main-navigation" aria-label="主要功能">
+          <button type="button" class="nav-link is-active" data-screen="library"><span class="nav-icon">▦</span> 知識總覽 <span class="nav-shortcut">01</span></button>
+          <button type="button" class="nav-link" data-screen="roadmap"><span class="nav-icon">◈</span> 學習路線 <span class="nav-shortcut">02</span></button>
+          <button type="button" class="nav-link" data-screen="glossary"><span class="nav-icon">≡</span> 術語字典 <span class="nav-shortcut">03</span></button>
+        </nav>
+        <p class="sidebar-label category-heading">TOPIC CATEGORIES</p>
+        <nav id="category-nav" class="category-nav" aria-label="文章分類"></nav>
+        <div class="sidebar-bottom">
+          <div class="progress-widget">
+            <div class="progress-top"><span>YOUR PROGRESS</span><span id="sidebar-progress-number">0%</span></div>
+            <div class="progress-track"><span id="sidebar-progress-bar"></span></div>
+            <p id="sidebar-progress-caption">從第一篇開始，建立你的知識地圖。</p>
+          </div>
+          <p class="sidebar-credit">LEARN THE MARKET. OWN THE PROCESS.</p>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="topbar">
+          <button type="button" class="mobile-menu" id="menu-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+          <div class="topbar-breadcrumb"><span>BTC ATLAS</span><span class="divider">/</span><strong id="breadcrumb-current">知識總覽</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box" for="global-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜尋交易知識、名詞..." autocomplete="off" aria-label="搜尋文章與術語" /><kbd>/</kbd></label>
+            <span class="edition-tag"><span class="status-dot"></span> EDITION 01</span>
+          </div>
+        </header>
+
+        <main class="content">
+          <section id="screen-library" class="screen" aria-labelledby="library-title">
+            <div class="hero-panel">
+              <div class="hero-copy">
+                <div class="eyebrow"><span class="eyebrow-line"></span> YOUR EDGE STARTS WITH KNOWLEDGE</div>
+                <h1 id="library-title">讀懂市場，<br /><em>建立自己的交易邏輯。</em></h1>
+                <p>從基礎 K 線到流動性、永續合約與總經事件。把零散的交易概念，整理成真正能反覆複習的知識體系。</p>
+                <div class="hero-actions"><button class="button button-primary" type="button" data-screen="roadmap">開始學習 <span aria-hidden="true">↗</span></button><button class="button button-secondary" type="button" id="explore-button">探索文章 <span aria-hidden="true">↓</span></button></div>
+              </div>
+              <div class="chart-wrap" aria-label="BTC K 線走勢示意圖，非即時行情">
+                <div class="chart-header"><span><span class="chart-coin">₿</span> BTC / USDT</span><small>4H <span class="chart-separator">·</span> SCHEMATIC</small></div>
+                <svg id="hero-chart" viewBox="0 0 515 258" role="img" aria-label="帶有均線、支撐區的示意 K 線圖"></svg>
+                <div class="chart-footer"><span><span class="tiny-circle"></span> 市場結構</span><span><span class="tiny-circle gold"></span> 均線趨勢</span><strong>NOT LIVE DATA</strong></div>
+              </div>
+              <span class="hero-watermark" aria-hidden="true">₿</span>
+            </div>
+
+            <div class="stat-grid" id="stat-grid">
+              <div class="stat-card"><span class="stat-symbol amber">▤</span><span class="stat-label">知識文章</span><strong id="stat-articles">--</strong><small>持續擴充中</small></div>
+              <div class="stat-card"><span class="stat-symbol blue">◫</span><span class="stat-label">學習主題</span><strong id="stat-categories">--</strong><small>從基礎到進階</small></div>
+              <div class="stat-card"><span class="stat-symbol green">✓</span><span class="stat-label">已完成閱讀</span><strong id="stat-completed">0</strong><small>儲存在此瀏覽器</small></div>
+              <div class="stat-card"><span class="stat-symbol purple">♡</span><span class="stat-label">收藏文章</span><strong id="stat-favorites">0</strong><small>建立專屬清單</small></div>
+            </div>
+
+            <div class="section-heading" id="articles-anchor"><div><div class="eyebrow muted">EXPLORE THE LIBRARY</div><h2>知識探索<span class="heading-period">.</span></h2><p>選擇想深入的主題，或搜尋你正在研究的概念。</p></div><div class="section-controls"><button type="button" class="mini-filter is-active" data-filter="all">全部文章</button><button type="button" class="mini-filter" data-filter="favorites">♡ 我的收藏</button><button type="button" class="mini-filter" data-filter="unread">未閱讀</button></div></div>
+            <div class="active-filter" id="active-filter" aria-live="polite"></div>
+            <div id="article-grid" class="article-grid"></div>
+            <div id="library-empty" class="empty-state" hidden><span>⌕</span><h3>沒有找到符合的文章</h3><p>試著更換搜尋關鍵字或分類。</p><button type="button" class="button button-secondary" id="clear-filters">清除篩選</button></div>
+          </section>
+
+          <section id="screen-roadmap" class="screen" aria-labelledby="roadmap-title" hidden>
+            <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> YOUR LEARNING PATH</div><h1 id="roadmap-title">從理解市場，<br /><em>到建立自己的系統。</em></h1><p>依照建議順序逐步閱讀。學習進度儲存在你的瀏覽器，不需註冊帳號。</p></div>
+            <div class="roadmap-overview"><div><span class="meta-title">COURSE PROGRESS</span><h3 id="roadmap-progress">0 / 0 <small>階段已完成</small></h3><div class="progress-track large"><span id="roadmap-progress-bar"></span></div></div><span class="roadmap-big-icon" aria-hidden="true">↗</span></div>
+            <div class="roadmap-list" id="roadmap-list"></div>
+          </section>
+
+          <section id="screen-glossary" class="screen" aria-labelledby="glossary-title" hidden>
+            <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> THE TRADER'S DICTIONARY</div><h1 id="glossary-title">交易術語，<br /><em>一次搞懂。</em></h1><p>遇到不熟悉的英文縮寫？來這裡快速查找中文解釋，再連回相關文章深入閱讀。</p></div>
+            <div class="glossary-banner"><strong><span id="glossary-count">0</span> 個術語</strong><span>英文縮寫 · 中文解釋 · 延伸學習</span></div>
+            <div class="glossary-grid" id="glossary-grid"></div>
+            <div id="glossary-empty" class="empty-state" hidden>找不到相關術語，請試試別的關鍵字。</div>
+          </section>
+
+          <footer class="footer"><span>© BTC ATLAS · PERSONAL LEARNING PROJECT</span><span>內容僅供學習，不構成投資建議。圖表為示意，非即時行情。</span></footer>
+        </main>
+      </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobile-overlay" hidden></div>
+    <dialog class="article-modal" id="article-dialog" aria-labelledby="dialog-title"><div id="article-detail"></div></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
